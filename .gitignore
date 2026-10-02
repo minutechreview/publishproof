@@ -1,0 +1,9 @@
+node_modules/
+.env
+.env.*
+*.log
+.DS_Store
+output/chrome-test-profile*/
+output/live-demo-approval.json
+output/live-demo-authorization.md
+.playwright-cli/

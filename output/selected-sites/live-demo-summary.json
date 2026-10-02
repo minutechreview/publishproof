@@ -1,0 +1,121 @@
+{
+  "noSiteChangesOrRedeployment": true,
+  "noChromeLaunched": true,
+  "documentedProviderCostUsd": 0,
+  "balanceNotIndependentlyMeasured": true,
+  "rounds": [
+    {
+      "name": "himas-corner",
+      "url": "https://www.himascorner.com/",
+      "phase": "baseline",
+      "observedAt": "2026-10-02T03:19:10.154Z",
+      "provider": "tinyfish-live",
+      "searchResults": 0,
+      "searchError": "Search request failed or timed out; no automatic retry. Check provider access/rate limits.",
+      "fetchedPages": [
+        {
+          "url": "https://www.himascorner.com/",
+          "error": "Fetch request failed or timed out; no automatic retry. Check provider access/rate limits."
+        }
+      ],
+      "failedChecks": [
+        "Sampled internal link response"
+      ],
+      "reviewSuggestions": [],
+      "comparisonCounts": {}
+    },
+    {
+      "name": "himas-corner",
+      "url": "https://www.himascorner.com/",
+      "phase": "recheck",
+      "observedAt": "2026-10-02T03:25:26.558Z",
+      "provider": "tinyfish-live",
+      "searchResults": 9,
+      "fetchedPages": [
+        {
+          "url": "https://www.himascorner.com/",
+          "characters": 702
+        }
+      ],
+      "failedChecks": [
+        "Sampled internal link response"
+      ],
+      "reviewSuggestions": [],
+      "comparisonCounts": {
+        "still-failing": 1
+      }
+    },
+    {
+      "name": "rayanbuild",
+      "url": "https://rayanbuild-site.web.app/",
+      "phase": "baseline",
+      "observedAt": "2026-10-02T03:25:49.138Z",
+      "provider": "tinyfish-live",
+      "searchResults": 8,
+      "searchError": "Some returned search results had invalid or unsafe fields; visibility is unable to verify.",
+      "fetchedPages": [
+        {
+          "url": "https://rayanbuild-site.web.app/",
+          "characters": 5283
+        }
+      ],
+      "failedChecks": [],
+      "reviewSuggestions": [],
+      "comparisonCounts": {}
+    },
+    {
+      "name": "thb-blue",
+      "url": "https://thb-blue.vercel.app/",
+      "phase": "baseline",
+      "observedAt": "2026-10-02T03:27:54.751Z",
+      "provider": "tinyfish-live",
+      "searchResults": 8,
+      "searchError": "Some returned search results had invalid or unsafe fields; visibility is unable to verify.",
+      "fetchedPages": [
+        {
+          "url": "https://thb-blue.vercel.app/",
+          "characters": 3558
+        }
+      ],
+      "failedChecks": [],
+      "reviewSuggestions": [],
+      "comparisonCounts": {}
+    },
+    {
+      "name": "rayanbuild",
+      "url": "https://rayanbuild-site.web.app/",
+      "phase": "recheck",
+      "observedAt": "2026-10-02T03:28:17.574Z",
+      "provider": "tinyfish-live",
+      "searchResults": 8,
+      "searchError": "Some returned search results had invalid or unsafe fields; visibility is unable to verify.",
+      "fetchedPages": [
+        {
+          "url": "https://rayanbuild-site.web.app/",
+          "characters": 5283
+        }
+      ],
+      "failedChecks": [],
+      "reviewSuggestions": [],
+      "comparisonCounts": {}
+    },
+    {
+      "name": "thb-blue",
+      "url": "https://thb-blue.vercel.app/",
+      "phase": "recheck",
+      "observedAt": "2026-10-02T03:28:40.629Z",
+      "provider": "tinyfish-live",
+      "searchResults": 8,
+      "searchError": "Some returned search results had invalid or unsafe fields; visibility is unable to verify.",
+      "fetchedPages": [
+        {
+          "url": "https://thb-blue.vercel.app/",
+          "characters": 3558
+        }
+      ],
+      "failedChecks": [],
+      "reviewSuggestions": [],
+      "comparisonCounts": {}
+    }
+  ]
+}

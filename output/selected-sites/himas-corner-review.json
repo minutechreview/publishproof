@@ -1,0 +1,537 @@
+{
+  "note": "Evidence assembly: fresh raw observations are paired with the last recorded live Search/Fetch observation. Each observer keeps its own timestamp. Historical original reports are retained. Classification changes are not site repairs.",
+  "report": {
+    "version": 1,
+    "id": "c9d616d9-c6c0-4a8a-9906-fc889ad4f7fb",
+    "createdAt": "2026-10-02T03:31:40.088Z",
+    "mode": "public-live",
+    "urls": [
+      "https://www.himascorner.com/"
+    ],
+    "pages": [
+      {
+        "url": "https://www.himascorner.com/",
+        "finalUrl": "https://www.himascorner.com/",
+        "status": 200,
+        "redirects": [],
+        "headers": {
+          "content-type": "text/html; charset=utf-8",
+          "cache-control": "no-cache, must-revalidate",
+          "link": "<https://www.himascorner.com/images/og-image.jpg>; rel=\"preload\"; as=image, <https://fonts.googleapis.com/>; rel=\"preconnect\""
+        },
+        "metadata": {
+          "titles": [
+            "Himas Corner | Luxury Gift Boutique Kuwait – هدايا فاخرة الكويت"
+          ],
+          "descriptions": [
+            "Himas Corner — Kuwait's luxury gifting boutique. Handcrafted gift boxes, floral arrangements, and personalised keepsakes. Order via Instagram @himas_corner."
+          ],
+          "canonicals": [
+            "https://www.himascorner.com/"
+          ],
+          "robots": [
+            "robots: index, follow"
+          ],
+          "ogImages": [
+            "https://www.himascorner.com/images/og-image.jpg"
+          ],
+          "links": [
+            "https://www.himascorner.com/",
+            "https://www.himascorner.com/index.html",
+            "https://www.himascorner.com/cdn-cgi/l/email-protection",
+            "https://www.himascorner.com/shop.html"
+          ],
+          "missingAlt": 0,
+          "imageCount": 3,
+          "jsonLdErrors": 0,
+          "jsonLdCount": 2,
+          "viewport": true,
+          "skippedQueryReferences": 11,
+          "analyticsHint": true
+        }
+      }
+    ],
+    "checks": [
+      {
+        "id": "[\"http\",\"https://www.himascorner.com/\",\"page\"]",
+        "rule": "http",
+        "url": "https://www.himascorner.com/",
+        "subject": "page",
+        "verdict": "pass",
+        "title": "Direct page load / deep-link refresh",
+        "evidence": "GET https://www.himascorner.com/ returned HTTP 200; 0 redirects.",
+        "impact": "A chosen URL should open directly for visitors. A bot block or login response cannot prove a broken website.",
+        "repair": "Fix the route response or deployment rewrite for this exact public URL. Preserve real 404 behavior for nonexistent routes.",
+        "acceptance": "A fresh credential-free GET of this exact public URL returns intended HTML with HTTP 2xx. Verify rendered content manually.",
+        "source": "http",
+        "severity": "high",
+        "confidence": "high"
+      },
+      {
+        "id": "[\"title\",\"https://www.himascorner.com/\",\"page\"]",
+        "rule": "title",
+        "url": "https://www.himascorner.com/",
+        "subject": "page",
+        "verdict": "pass",
+        "title": "Page title needs one clear value",
+        "evidence": "[\"Himas Corner | Luxury Gift Boutique Kuwait – هدايا فاخرة الكويت\"]",
+        "impact": "The page title helps people and search engines identify this page.",
+        "repair": "Set exactly one descriptive title for this route. Preserve the brand and page purpose.",
+        "acceptance": "Fresh page has exactly one nonempty <title>.",
+        "source": "raw-html",
+        "severity": "medium",
+        "confidence": "high"
+      },
+      {
+        "id": "[\"description\",\"https://www.himascorner.com/\",\"page\"]",
+        "rule": "description",
+        "url": "https://www.himascorner.com/",
+        "subject": "page",
+        "verdict": "pass",
+        "title": "Review the search description",
+        "evidence": "[\"Himas Corner — Kuwait's luxury gifting boutique. Handcrafted gift boxes, floral arrangements, and personalised keepsakes. Order via Instagram @himas_corner.\"]",
+        "impact": "A description can influence search snippets; search engines may choose other text.",
+        "repair": "If useful for this page, add one truthful route-specific description.",
+        "acceptance": "At most one description; any supplied value accurately describes this page.",
+        "source": "raw-html",
+        "severity": "low",
+        "confidence": "high"
+      },
+      {
+        "id": "[\"noindex\",\"https://www.himascorner.com/\",\"page\"]",
+        "rule": "noindex",
+        "url": "https://www.himascorner.com/",
+        "subject": "page",
+        "verdict": "pass",
+        "title": "Indexing is explicitly discouraged",
+        "evidence": "robots: index, follow",
+        "impact": "A noindex directive asks compliant search engines to exclude the page. It may be intentional.",
+        "repair": "Confirm this page should be searchable before removing only the unintended noindex/none directive. Preserve intentional exclusions.",
+        "acceptance": "Approved public route has no unintended noindex/none in raw and rendered meta.",
+        "source": "raw-html",
+        "severity": "high",
+        "confidence": "high"
+      },
+      {
+        "id": "[\"nofollow\",\"https://www.himascorner.com/\",\"page\"]",
+        "rule": "nofollow",
+        "url": "https://www.himascorner.com/",
+        "subject": "page",
+        "verdict": "pass",
+        "title": "Review link-following restriction",
+        "evidence": "robots: index, follow",
+        "impact": "This asks crawlers not to follow page links; it does not by itself exclude the page from search.",
+        "repair": "Confirm whether page-level nofollow is intentional; keep deliberate policy controls.",
+        "acceptance": "Document the intended page-level link policy.",
+        "source": "raw-html",
+        "severity": "low",
+        "confidence": "high"
+      },
+      {
+        "id": "[\"canonical\",\"https://www.himascorner.com/\",\"page\"]",
+        "rule": "canonical",
+        "url": "https://www.himascorner.com/",
+        "subject": "page",
+        "verdict": "pass",
+        "title": "Review the preferred page URL",
+        "evidence": "[\"https://www.himascorner.com/\"]",
+        "impact": "Conflicting canonical URLs provide inconsistent consolidation signals. A canonical to another page may be deliberate.",
+        "repair": "Resolve contradictory canonical declarations. Confirm intended duplicate grouping before changing a canonical target.",
+        "acceptance": "All existing HTML and HTTP canonical declarations agree with the intended preferred public URL.",
+        "source": "raw-html",
+        "severity": "medium",
+        "confidence": "high"
+      },
+      {
+        "id": "[\"jsonld\",\"https://www.himascorner.com/\",\"page\"]",
+        "rule": "jsonld",
+        "url": "https://www.himascorner.com/",
+        "subject": "page",
+        "verdict": "pass",
+        "title": "Existing structured data must parse",
+        "evidence": "2 JSON-LD blocks; 0 JSON parse errors.",
+        "impact": "Malformed JSON cannot be interpreted as the intended structured data. Syntax checks do not validate schema eligibility.",
+        "repair": "Repair syntax in existing JSON-LD only; do not invent ratings, facts, citations, or new schema types.",
+        "acceptance": "All existing application/ld+json blocks parse with JSON.parse; validate applicable types separately.",
+        "source": "raw-html",
+        "severity": "medium",
+        "confidence": "high"
+      },
+      {
+        "id": "[\"alt\",\"https://www.himascorner.com/\",\"page\"]",
+        "rule": "alt",
+        "url": "https://www.himascorner.com/",
+        "subject": "page",
+        "verdict": "pass",
+        "title": "Images need an alt attribute",
+        "evidence": "0 of 3 images omit alt. Empty alt is accepted for decorative images.",
+        "impact": "Screen readers need a text alternative or an explicit decorative choice.",
+        "repair": "Add meaningful alt for informative images and alt=\"\" for decorative images. Do not infer hidden image contents.",
+        "acceptance": "Every img has an alt attribute; manually review whether alternatives suit image purpose.",
+        "source": "raw-html",
+        "severity": "low",
+        "confidence": "high"
+      },
+      {
+        "id": "[\"viewport\",\"https://www.himascorner.com/\",\"page\"]",
+        "rule": "viewport",
+        "url": "https://www.himascorner.com/",
+        "subject": "page",
+        "verdict": "pass",
+        "title": "Review mobile viewport",
+        "evidence": "A viewport meta tag is present.",
+        "impact": "Mobile browsers may show a scaled desktop layout. Presence alone does not prove mobile usability.",
+        "repair": "Review the mobile layout and add a viewport declaration if required by the design.",
+        "acceptance": "At 390px width, intended content and navigation remain usable.",
+        "source": "raw-html",
+        "severity": "low",
+        "confidence": "high"
+      },
+      {
+        "id": "[\"redirect\",\"https://www.himascorner.com/\",\"page\"]",
+        "rule": "redirect",
+        "url": "https://www.himascorner.com/",
+        "subject": "page",
+        "verdict": "pass",
+        "title": "Review redirects",
+        "evidence": "0 hops; final URL: https://www.himascorner.com/.",
+        "impact": "Extra hops add requests. Some redirects are intentional.",
+        "repair": "Link directly to the intended final public URL and simplify unnecessary same-origin redirect chains.",
+        "acceptance": "Chosen links reach the intended final URL with at most one intentional redirect.",
+        "source": "http",
+        "severity": "low",
+        "confidence": "high"
+      },
+      {
+        "id": "[\"header-noindex\",\"https://www.himascorner.com/\",\"page\"]",
+        "rule": "header-noindex",
+        "url": "https://www.himascorner.com/",
+        "subject": "page",
+        "verdict": "pass",
+        "title": "HTTP indexing restriction",
+        "evidence": "No X-Robots-Tag header observed.",
+        "impact": "An HTTP noindex directive can exclude this page even if its HTML looks correct. It may be deliberate.",
+        "repair": "Confirm intended indexing policy; remove only unintended header noindex/none for this route.",
+        "acceptance": "Fresh GET headers have no unintended generic/Googlebot noindex/none.",
+        "source": "http",
+        "severity": "high",
+        "confidence": "high"
+      },
+      {
+        "id": "[\"query-references\",\"https://www.himascorner.com/\",\"page\"]",
+        "rule": "query-references",
+        "url": "https://www.himascorner.com/",
+        "subject": "page",
+        "verdict": "unknown",
+        "title": "Query-dependent references are outside this sample",
+        "evidence": "11 link/OG references with query strings were omitted before probing.",
+        "impact": "Removing a signed or query-dependent URL can change its destination or asset. This sample does not test those references.",
+        "repair": "Verify query-dependent destinations and signed assets manually without sharing token-bearing URLs.",
+        "acceptance": "Owner checks original intended public links/assets through an appropriate safe workflow.",
+        "source": "raw-html",
+        "severity": "low",
+        "confidence": "high"
+      },
+      {
+        "id": "[\"analytics\",\"https://www.himascorner.com/\",\"page\"]",
+        "rule": "analytics",
+        "url": "https://www.himascorner.com/",
+        "subject": "page",
+        "verdict": "unknown",
+        "title": "Analytics receipt needs owner access",
+        "evidence": "A known analytics script hint was found; event delivery was not checked.",
+        "impact": "A script is not proof that visits or events reached an analytics account. Analytics is optional.",
+        "repair": "If analytics is wanted, use the owner’s vendor debug view and consent-aware test journey. Do not add a vendor without approval.",
+        "acceptance": "Owner verifies expected test event receipt and consent behavior in the chosen analytics tool.",
+        "source": "owner-integration",
+        "severity": "low",
+        "confidence": "high"
+      },
+      {
+        "id": "[\"robots\",\"https://www.himascorner.com/\",\"page\"]",
+        "rule": "robots",
+        "url": "https://www.himascorner.com/",
+        "subject": "page",
+        "verdict": "pass",
+        "title": "Crawler access policy",
+        "evidence": "*: Allow: /",
+        "impact": "A matching robots.txt restriction prevents compliant crawling; it does not guarantee exclusion from indexing. Restrictions may be intentional.",
+        "repair": "Confirm the public route should be crawled before changing only its matching Googlebot/* rule. Preserve deliberate restrictions.",
+        "acceptance": "The intended public route is allowed by the applicable robots policy; no robots file is required.",
+        "source": "http",
+        "severity": "high",
+        "confidence": "high"
+      },
+      {
+        "id": "[\"internal-link\",\"https://www.himascorner.com/\",\"https://www.himascorner.com/index.html\"]",
+        "rule": "internal-link",
+        "url": "https://www.himascorner.com/",
+        "subject": "https://www.himascorner.com/index.html",
+        "verdict": "pass",
+        "title": "Sampled internal link response",
+        "evidence": "HEAD https://www.himascorner.com/index.html: HTTP 200; Content-Type text/html; charset=utf-8.",
+        "impact": "A missing destination interrupts navigation. HEAD is only a bounded response check, not a user journey.",
+        "repair": "Repair the exact broken internal destination or link. Do not mask real 404s with universal success.",
+        "acceptance": "A fresh direct GET opens the intended linked page; manually verify navigation.",
+        "source": "http",
+        "severity": "medium",
+        "confidence": "high"
+      },
+      {
+        "id": "[\"internal-link\",\"https://www.himascorner.com/\",\"https://www.himascorner.com/cdn-cgi/l/email-protection\"]",
+        "rule": "internal-link",
+        "url": "https://www.himascorner.com/",
+        "subject": "https://www.himascorner.com/cdn-cgi/l/email-protection",
+        "verdict": "unknown",
+        "title": "Verify the decoded contact link",
+        "evidence": "GET (after failing HEAD) https://www.himascorner.com/cdn-cgi/l/email-protection: HTTP 404; Content-Type text/html. This is a Cloudflare-style email-obfuscation placeholder. Its raw HTTP response does not establish whether the decoded contact link works in a browser.",
+        "impact": "Email obfuscation may intentionally replace this placeholder in a browser. The raw scanner cannot verify the final contact action.",
+        "repair": "Verify the visible contact link in a signed-out browser with normal scripts. Preserve intentional email protection; change only a demonstrated user-facing failure.",
+        "acceptance": "The decoded contact link opens the intended action. No message or form is sent during verification.",
+        "source": "http",
+        "severity": "medium",
+        "confidence": "high"
+      },
+      {
+        "id": "[\"internal-link\",\"https://www.himascorner.com/\",\"https://www.himascorner.com/shop.html\"]",
+        "rule": "internal-link",
+        "url": "https://www.himascorner.com/",
+        "subject": "https://www.himascorner.com/shop.html",
+        "verdict": "pass",
+        "title": "Sampled internal link response",
+        "evidence": "HEAD https://www.himascorner.com/shop.html: HTTP 200; Content-Type text/html; charset=utf-8.",
+        "impact": "A missing destination interrupts navigation. HEAD is only a bounded response check, not a user journey.",
+        "repair": "Repair the exact broken internal destination or link. Do not mask real 404s with universal success.",
+        "acceptance": "A fresh direct GET opens the intended linked page; manually verify navigation.",
+        "source": "http",
+        "severity": "medium",
+        "confidence": "high"
+      },
+      {
+        "id": "[\"og-asset\",\"https://www.himascorner.com/\",\"https://www.himascorner.com/images/og-image.jpg\"]",
+        "rule": "og-asset",
+        "url": "https://www.himascorner.com/",
+        "subject": "https://www.himascorner.com/images/og-image.jpg",
+        "verdict": "pass",
+        "title": "Social preview image response",
+        "evidence": "HEAD https://www.himascorner.com/images/og-image.jpg: HTTP 200; Content-Type image/jpeg.",
+        "impact": "A missing OG image can break shared previews. HEAD success does not prove image pixels or preview appearance.",
+        "repair": "Correct the existing OG image URL or restore its public asset. Preserve intended branding.",
+        "acceptance": "This image URL returns 2xx with image Content-Type; visually verify a real preview.",
+        "source": "http",
+        "severity": "medium",
+        "confidence": "high"
+      },
+      {
+        "id": "[\"duplicate-titles\",\"https://www.himascorner.com/\",\"page\"]",
+        "rule": "duplicate-titles",
+        "url": "https://www.himascorner.com/",
+        "subject": "page",
+        "verdict": "pass",
+        "title": "Review repeated titles",
+        "evidence": "No same value found across distinct sampled final URLs.",
+        "impact": "Repeated metadata may make distinct pages harder to tell apart; deliberate duplicates can be valid.",
+        "repair": "Review page intent and give distinct pages truthful, distinct metadata. Preserve intentional duplicate grouping.",
+        "acceptance": "Recheck the same complete sample and manually confirm titles/descriptions suit each page.",
+        "source": "sample",
+        "severity": "low",
+        "confidence": "high"
+      },
+      {
+        "id": "[\"duplicate-descriptions\",\"https://www.himascorner.com/\",\"page\"]",
+        "rule": "duplicate-descriptions",
+        "url": "https://www.himascorner.com/",
+        "subject": "page",
+        "verdict": "pass",
+        "title": "Review repeated descriptions",
+        "evidence": "No same value found across distinct sampled final URLs.",
+        "impact": "Repeated metadata may make distinct pages harder to tell apart; deliberate duplicates can be valid.",
+        "repair": "Review page intent and give distinct pages truthful, distinct metadata. Preserve intentional duplicate grouping.",
+        "acceptance": "Recheck the same complete sample and manually confirm titles/descriptions suit each page.",
+        "source": "sample",
+        "severity": "low",
+        "confidence": "high"
+      },
+      {
+        "id": "[\"indexing\",\"https://www.himascorner.com/\",\"page\"]",
+        "rule": "indexing",
+        "url": "https://www.himascorner.com/",
+        "subject": "page",
+        "verdict": "unknown",
+        "title": "Actual indexing needs Search Console",
+        "evidence": "No owner Search Console integration is connected.",
+        "impact": "No directive or response check can establish actual search indexing, rankings, or traffic.",
+        "repair": "Use the owner’s Search Console URL Inspection and performance reports.",
+        "acceptance": "Owner verifies the selected URLs and intended search presence.",
+        "source": "owner-integration",
+        "severity": "low",
+        "confidence": "high"
+      },
+      {
+        "id": "[\"citations\",\"https://www.himascorner.com/\",\"page\"]",
+        "rule": "citations",
+        "url": "https://www.himascorner.com/",
+        "subject": "page",
+        "verdict": "unknown",
+        "title": "Citations are three different questions",
+        "evidence": "Content sources, local business mentions, and AI answer citations are not verified in this sample.",
+        "impact": "Source links support content claims; business citations refer to directory mentions; AI citations refer to attribution in specific answers. There is no universal citation tag.",
+        "repair": "Clarify the desired citation concept. Review source quality, directory consistency, or observed AI answers separately. Do not fabricate endorsements or citations.",
+        "acceptance": "Owner selects a citation goal and verifies it with relevant external evidence.",
+        "source": "owner-integration",
+        "severity": "low",
+        "confidence": "high"
+      },
+      {
+        "id": "[\"tinyfish.visibility\",\"https://www.himascorner.com/\",\"[\\\"https://www.himascorner.com/\\\",\\\"US\\\",\\\"en\\\"]\"]",
+        "rule": "tinyfish.visibility",
+        "url": "https://www.himascorner.com/",
+        "subject": "[\"https://www.himascorner.com/\",\"US\",\"en\"]",
+        "verdict": "pass",
+        "title": "Page visibility in this search sample",
+        "evidence": "Query \"https://www.himascorner.com/\" · US/en · 9 returned results inspected. Exact query-free URL observed at TinyFish position 1; 2 same-origin results. Absence from this sample does not prove non-indexing.",
+        "impact": "A readable page can still be absent from a particular retrieval sample. TinyFish result order is not a Google ranking or an AI-answer citation.",
+        "repair": "Inspect this exact page's intended topic, crawl policy, title and internal links using the separate confirmed observations. Make only evidence-supported edits; do not add repeated keywords or invented facts. If the page is already correct, use owner Search Console to investigate discovery instead of guessing a code fix.",
+        "acceptance": "Rerun the identical query and locale. Record whether this exact URL appears in the returned sample; use owner integrations for actual indexing and traffic.",
+        "source": "tinyfish-search",
+        "severity": "medium",
+        "confidence": "high"
+      },
+      {
+        "id": "[\"tinyfish.readable\",\"https://www.himascorner.com/\",\"page\"]",
+        "rule": "tinyfish.readable",
+        "url": "https://www.himascorner.com/",
+        "subject": "page",
+        "verdict": "pass",
+        "title": "Text available to this AI fetch tool",
+        "evidence": "702 extracted characters. Extracted title (may prefer OG): \"Himas Corner | Luxury Gift Boutique Kuwait\". Excerpt: \"\\\"Every gift should feel like a love letter.\\\"\\n\\nHimas Corner was born from a passion for turning everyday moments into treasured celebrations. Based in Kuwait, we curate and handcraft luxury gift experiences that leave a lasting impression.\\n\\nEvery piece we create tells a story. Whether it's a birthday, anniversary, or a simple gesture of appreciation, we make it unforgettable.\\n\\nEvery gift assembled with love.\\n\\nCustom messages on every order.\\n\\nFast, careful delivery everywhere.\\n\\nFrom floral bouquets to luxury hampers — every occasion, beautifully covered.\\n\\n@himas\\\\_corner\\n\\nSee our latest creations, behind-the-scenes moments, and special offers. DM us to place a custom order.\\n\\nFollow @himas\\\\_corner\"",
+        "impact": "This observes what TinyFish Fetch extracted on this run. It cannot establish every AI tool's understanding, original tags, or why an extraction failed.",
+        "repair": "Inspect this exact public page in a signed-out session. If important information is only in images, canvas or inaccessible interactions, expose equivalent visible semantic text without changing the design or inventing content. Treat provider blocking/timeouts as unknown and investigate before changing the site.",
+        "acceptance": "A fresh ttl=0 Fetch run returns the intended visible content for the same URL, with source-specific evidence; raw HTTP/head tag checks continue independently.",
+        "source": "tinyfish-fetch",
+        "severity": "medium",
+        "confidence": "high"
+      }
+    ],
+    "requestCount": 9,
+    "limits": {
+      "pages": 5,
+      "requests": 60,
+      "seconds": 45,
+      "maxPageBytes": 1048576
+    },
+    "tinyfish": {
+      "status": "live",
+      "reason": "Recorded live TinyFish observation at 2026-10-02T03:25:29.834Z, paired with separately refreshed raw checks at 2026-10-02T03:31:40.088Z. No new provider call was made to assemble this report."
+    },
+    "retrieval": {
+      "provider": "tinyfish-live",
+      "observedAt": "2026-10-02T03:25:29.834Z",
+      "query": "https://www.himascorner.com/",
+      "queryKind": "url-discovery",
+      "location": "US",
+      "language": "en",
+      "search": {
+        "hits": [
+          {
+            "url": "https://www.himascorner.com/",
+            "position": 1,
+            "title": "Himas Corner | Luxury Gift Boutique Kuwait – هدايا فاخرة الكويت",
+            "snippet": "Himas Corner — Kuwait's luxury gifting boutique. Handcrafted gift boxes, floral arrangements, and personalised keepsakes.",
+            "queryOmitted": false
+          },
+          {
+            "url": "https://www.himascorner.com/shop.html",
+            "position": 2,
+            "title": "Shop — Himas Corner | Bouquets & Gifts Kuwait",
+            "snippet": "Shop Himas Corner: custom bouquets, gift hampers, customised gifts, keychains & bangles. Kuwait's luxury handcrafted gift boutique with delivery. Charm sets, ...",
+            "queryOmitted": false
+          },
+          {
+            "url": "https://www.facebook.com/100070412263050/",
+            "position": 3,
+            "title": "Himas_henna_corner - Facebook",
+            "snippet": "✨ ITS TIME KUWAIT ✨ To celebrate, enjoy FLAT 20% OFF on EVERYTHING on our website for the first 3 days only. · ✨ GETTING READY ✨ We're launching on 1st July!",
+            "queryOmitted": false
+          },
+          {
+            "url": "https://www-fallback.instagram.com/himas_corner/",
+            "position": 4,
+            "title": "Sparkling Memories (@himas_corner) - Instagram",
+            "snippet": "Turning gifts into beautiful moments ✨ Premium luxury hampers at affordable prices 🎁 Customize to your liking! Made in KUWAIT … 20% OFF on EVERYTHING on our ...",
+            "queryOmitted": false
+          },
+          {
+            "url": "https://www.instagram.com/reel/DYmZR_xSTOM/",
+            "position": 5,
+            "title": "himas_corner - Instagram",
+            "snippet": "... HimasCorner #GiftHamper #AffordableLuxury #CuteGifts #GiftIdeas HamperLove PrettyPackaging LuxuryOnABudget AestheticGifts GiftShopFinds ...",
+            "queryOmitted": false
+          },
+          {
+            "url": "https://www.tiktok.com/@funwithkazi/video/7657236873173077266",
+            "position": 6,
+            "title": "30% OFF with Code KAZI30 — Hima's Corner - TikTok",
+            "snippet": "... Hima's Corner has the perfect surprise for every occasion. ❤️   https://www.himascorner.com/ Website Launch Sale: 30% OFF with Code KAZI30 ...",
+            "queryOmitted": false
+          },
+          {
+            "url": "https://www.instagram.com/reel/Dd4vTA0N5AD/",
+            "position": 7,
+            "title": "Celebration with joy   Birthday | Anniversary ... - Instagram",
+            "snippet": "... Himas Corner, handmade gifts Kuwait, crochet keychains Kuwait, aesthetic gifts, artisan crafts Birthday surprise Kuwait, anniversary ...",
+            "queryOmitted": false
+          },
+          {
+            "url": "https://www.youtube.com/channel/UCSQl1UQazS5y9v8WCp_sLkA",
+            "position": 8,
+            "title": "Hima's corner - YouTube",
+            "snippet": "Hima's corner. @Himascorner. 77 subscribers•8 videos. welcome to my cozy corner! ✨ ...more welcome to my cozy corner! ✨ ...more ...more. Subscribe.",
+            "queryOmitted": false
+          },
+          {
+            "url": "https://www.instagram.com/reel/DYvK4q3qz1E/",
+            "position": 9,
+            "title": "POV: You receive the prettiest Eid hamper and instantly feel the ...",
+            "snippet": "... sweetest Eid hamper this season ✨🛍️         #EidHamper #HimasCorner #EidGiftIdeas #EidVibes #FestiveGifting\".",
+            "queryOmitted": false
+          }
+        ]
+      },
+      "pages": [
+        {
+          "url": "https://www.himascorner.com/",
+          "finalUrl": "https://www.himascorner.com/",
+          "title": "Himas Corner | Luxury Gift Boutique Kuwait",
+          "characters": 702,
+          "excerpt": "\"Every gift should feel like a love letter.\"\n\nHimas Corner was born from a passion for turning everyday moments into treasured celebrations. Based in Kuwait, we curate and handcraft luxury gift experiences that leave a lasting impression.\n\nEvery piece we create tells a story. Whether it's a birthday, anniversary, or a simple gesture of appreciation, we make it unforgettable.\n\nEvery gift assembled with love.\n\nCustom messages on every order.\n\nFast, careful delivery everywhere.\n\nFrom floral bouquets to luxury hampers — every occasion, beautifully covered.\n\n@himas\\_corner\n\nSee our latest creations, behind-the-scenes moments, and special offers. DM us to place a custom order.\n\nFollow @himas\\_corner",
+          "matchedTerms": [],
+          "missingTerms": []
+        }
+      ],
+      "searchRequests": 1,
+      "fetchUrls": 1
+    }
+  },
+  "comparisons": [
+    {
+      "check": {
+        "id": "[\"internal-link\",\"https://www.himascorner.com/\",\"https://www.himascorner.com/cdn-cgi/l/email-protection\"]",
+        "rule": "internal-link",
+        "url": "https://www.himascorner.com/",
+        "subject": "https://www.himascorner.com/cdn-cgi/l/email-protection",
+        "verdict": "fail",
+        "title": "Sampled internal link response",
+        "evidence": "GET (after failing HEAD) https://www.himascorner.com/cdn-cgi/l/email-protection: HTTP 404; Content-Type text/html.",
+        "impact": "A missing destination interrupts navigation. HEAD is only a bounded response check, not a user journey.",
+        "repair": "Repair the exact broken internal destination or link. Do not mask real 404s with universal success.",
+        "acceptance": "A fresh direct GET opens the intended linked page; manually verify navigation.",
+        "source": "http",
+        "severity": "medium",
+        "confidence": "high"
+      },
+      "status": "unable-to-verify",
+      "evidence": "GET (after failing HEAD) https://www.himascorner.com/cdn-cgi/l/email-protection: HTTP 404; Content-Type text/html. This is a Cloudflare-style email-obfuscation placeholder. Its raw HTTP response does not establish whether the decoded contact link works in a browser."
+    }
+  ]
+}

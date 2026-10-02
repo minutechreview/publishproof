@@ -1,0 +1,13 @@
+{
+  "exactUrls": [
+    "https://your-public-site.example/",
+    "https://your-public-site.example/guide",
+    "https://your-public-site.example/pricing"
+  ],
+  "query": "your public target query",
+  "expiresAt": "REPLACE_WITH_SHORT_UTC_EXPIRY",
+  "searchFetchFreeOnAccountVerified": false,
+  "remoteFetchRiskAccepted": false,
+  "maxSearchRequests": 2,
+  "maxFetchUrls": 6
+}

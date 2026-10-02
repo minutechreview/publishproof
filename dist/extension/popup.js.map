@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/extension/popup.ts"],
+  "sourcesContent": ["const button = document.querySelector<HTMLButtonElement>(\"#open\")!;\nbutton.addEventListener(\"click\", async () => {\n  try {\n    const [tab] = await chrome.tabs.query({\n      active: true,\n      currentWindow: true,\n    });\n    if (!tab?.id || !tab.url?.startsWith(\"http\"))\n      throw new Error(\"Open a public HTTP(S) website first.\");\n    await chrome.tabs.create({\n      url: chrome.runtime.getURL(`report.html?tab=${tab.id}`),\n    });\n    window.close();\n  } catch (e) {\n    document.querySelector(\"#message\")!.textContent =\n      e instanceof Error ? e.message : \"Unable to open page auditor.\";\n  }\n});\n"],
+  "mappings": ";;;AAAA,MAAM,SAAS,SAAS,cAAiC,OAAO;AAChE,SAAO,iBAAiB,SAAS,YAAY;AAC3C,QAAI;AACF,YAAM,CAAC,GAAG,IAAI,MAAM,OAAO,KAAK,MAAM;AAAA,QACpC,QAAQ;AAAA,QACR,eAAe;AAAA,MACjB,CAAC;AACD,UAAI,CAAC,KAAK,MAAM,CAAC,IAAI,KAAK,WAAW,MAAM;AACzC,cAAM,IAAI,MAAM,sCAAsC;AACxD,YAAM,OAAO,KAAK,OAAO;AAAA,QACvB,KAAK,OAAO,QAAQ,OAAO,mBAAmB,IAAI,EAAE,EAAE;AAAA,MACxD,CAAC;AACD,aAAO,MAAM;AAAA,IACf,SAAS,GAAG;AACV,eAAS,cAAc,UAAU,EAAG,cAClC,aAAa,QAAQ,EAAE,UAAU;AAAA,IACrC;AAAA,EACF,CAAC;",
+  "names": []
+}

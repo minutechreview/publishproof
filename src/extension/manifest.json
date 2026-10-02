@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "PublishProof — public page auditor (prototype)",
+  "version": "0.1.0",
+  "description": "Check chosen public pages, see evidence, copy a repair prompt, and recheck after deployment.",
+  "permissions": ["activeTab", "scripting"],
+  "host_permissions": ["http://127.0.0.1:4317/*"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Check this public page"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'none'; connect-src 'self' http://127.0.0.1:4317; style-src 'self'; img-src 'self' data:; base-uri 'none'"
+  }
+}
