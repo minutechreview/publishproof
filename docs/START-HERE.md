@@ -1,44 +1,73 @@
-# Test PublishProof manually
+# Start here
 
-The helper and API key from the earlier live run have been stopped/discarded. A new live UI session needs a private key entry. These steps let you test without an automated Chrome launch.
+The everyday flow is: **open a public page → PublishProof → Audit this page → View full report**. No routes, search query, or technical settings are required for the default audit.
 
-## Start the helper on this Mac
+## 1. Start the local helper
 
-In Terminal, open this project folder and run:
+In the project folder, run:
 
 ```sh
 npm ci
 npm run build
-npm run test:live
+npm run dev
 ```
 
-The last command displays a masked Mac dialog. Read the scope, enter the TinyFish key, and click **Approve session**. This authorizes only the three named public homepages, one audit and one recheck each (maximum six searches and six fetched pages), for 30 minutes. The key stays in backend memory. No provider call starts automatically; no browser opens. Leave Terminal running. Current provider documentation lists Search/Fetch as free; proceed only if that pricing applies. No paid Agent/Browser call is available.
+Keep Terminal open. This option checks public HTTP/HTML without an API key or TinyFish calls.
 
-For a key-free button test instead, run `npm run dev`. It scans real public pages but the Search/Fetch checkbox stays inactive. `npm run demo` uses labeled synthetic fixtures and is not a live bounty demo. Do not run these helpers at the same time; they share port 4317.
+For the approved live AI test on this Mac, use `npm run test:live` instead of `npm run dev`. It opens a masked Mac dialog for the key and exact scope approval. No browser opens and no audit starts automatically. The key remains in backend memory and expires after 30 minutes. The session allows one audit and one recheck of each named homepage, one at a time with the search query blank:
 
-## Load the extension in a separate test profile
+- `https://www.himascorner.com/`
+- `https://rayanbuild-site.web.app/`
+- `https://thb-blue.vercel.app/`
 
-1. Open a separate signed-out Chrome test profile. Keep your normal profile untouched.
-2. In that profile, type `chrome://extensions` into the address bar. Enable Developer mode and click **Load unpacked**. Select the `dist/extension` folder inside this project, not its ZIP. If PublishProof is already loaded, click its reload button after rebuilding. [Chrome's official instructions](https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world#load-unpacked).
-3. Open `https://www.himascorner.com/`. Click the Extensions puzzle icon, choose PublishProof, then **Open page auditor**.
-4. Check the Current public page URL. Leave additional routes and target query blank for this bounded live session. If an older report is displayed, choose **Start a new sample** and set the new URL.
-5. Tick public-page consent, **Add Search & Fetch observations**, and remote-analysis consent. Click **Check selected pages**.
+Use the exact approved address: `https://himascorner.com/` differs from the approved `www` URL. The extension now hides the optional AI check when the current page is outside the helper's approved scope and explains the permitted URL. If the site redirects to an unapproved origin, stop that AI sample; do not bypass the scope gate.
 
-## Check the buttons and evidence
+Only one helper can use port 4317. To switch helpers or load updated server code, stop your existing helper with Ctrl+C first. A new live session requires a new key-and-scope approval. It does not renew the prior allowance automatically. Stop on access/billing errors; do not add funds or switch to a paid endpoint. Enter the key before recording a demo.
 
-- A report should appear with exact page URLs and evidence. The Search/Fetch panel should say **Live TinyFish**, not contract fixture. A provider error or partial sample must stay unknown rather than becoming a pass.
-- Try the findings filters and **Copy repair prompt**. Copy only after reviewing the evidence; do not apply or deploy changes just to test this button. A report with no confirmed repair does not need an invented code change.
-- Try **Export Markdown** and **Export JSON**. The corrected extension uses data-URL downloads. If Chrome crashes again, stop the test after that first crash and report the time/action; do not repeat it. The earlier workaround passed isolated QA, but it is not a guarantee for every Chrome version.
-- Refresh the public site tab, then click **Recheck same URLs** in the report. Without a site edit/deployment, this is a fresh observation and should not be presented as a repair. If the source-tab permission expired, click PublishProof on the public page again.
-- Start a new sample and repeat once for `https://rayanbuild-site.web.app/` and `https://thb-blue.vercel.app/`. Each site is audited alone because they are different origins. If the helper reports a minute rate limit, wait a minute before beginning the next distinct sample; do not repeat failed API calls automatically. Stop on API access/billing errors instead of adding funds or switching endpoints.
+## 2. Reload or load PublishProof
 
-When finished, press Ctrl+C in Terminal to stop the helper and discard the session key. If recording a video, enter the key before starting the recording. Share only public pages and bounded reports. No emails/forms/purchases/site edits/deployments/posts/submissions are part of the UI test.
+Use a separate signed-out Chrome test profile. Keep your normal browser profile untouched.
+
+If PublishProof is already installed, type `chrome://extensions` into the address bar and click its **Reload** button after building. Close old PublishProof report tabs so you open the new interface. The extension version is **0.2.0**.
+
+For a first installation, enable Developer mode, choose **Load unpacked**, and select this project's **dist/extension** folder. If you downloaded the ZIP, extract it first and select the folder containing `manifest.json`. Pin PublishProof from the Extensions puzzle menu if you want it in the toolbar. [Chrome's official installation guide](https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world#load-unpacked).
+
+## 3. Audit from the toolbar
+
+1. Open a public website in this test profile. For the bounded AI session, use one exact approved homepage above.
+2. Click PublishProof in the Chrome toolbar.
+3. Check **This page is public, and I have permission to check it**. If you want the approved Search/Fetch observations, also select **Include an AI search check**. That choice permits sending only the public URL to TinyFish.
+4. Click **Audit this page**. You can close the popup while it runs; its report tab keeps working.
+5. Reopen PublishProof on that page to see the saved score, coverage, and counts. Choose **View full report**.
+
+The score covers checked basics. It does not certify every visual issue or predict Google rankings. A helper/provider problem should show an understandable error and preserve your previous report, rather than silently earning points.
+
+## 4. Use the full report
+
+Read **Needs a fix** first, then **Worth a review**, **Not verified**, and **Looking good**. Each observation belongs to an exact page. Details are optional.
+
+Choose **Copy repair prompt** when there is something to repair or review. Paste it into your coding agent, review its proposed changes, and deploy through your usual workflow. PublishProof itself never changes or deploys the website.
+
+**Technical details** contains the evidence, score methodology, AI observations, and **Export report / Export evidence** controls. Copy/export buttons alone do not call TinyFish.
+
+## 5. Check after a repair
+
+Refresh the original website tab, click PublishProof again to grant fresh current-tab access, and choose **Check this page again** in the popup or **Check again** in the report.
+
+The same public page(s) and AI setting are checked with fresh evidence. A verified repair can improve its points; an unchanged site does not deserve an automatic increase. Unknown observations remain unknown. Changing the URLs creates a different sample, rather than a before/after claim. [How scores work](SCORE.md).
+
+For the bounded live session, make only its allowed recheck. To test the other selected sites, open each approved homepage and audit it separately. There is no need to add routes or a query.
 
 ## Common messages
 
-- **Local helper unavailable:** start exactly one helper and keep its Terminal window running, then reload the report.
-- **Search/Fetch inactive:** `npm run dev` is raw-only. For the real three-site UI test use `npm run test:live` and approve its masked dialog.
-- **Scope differs:** the live UI test allows one named homepage at a time, routes blank, query blank. Broader custom live scopes use the explicit CLI in TINYFISH.md.
-- **Allowance exhausted or session expired:** stop. A new session requires new explicit scope approval; restarting is not an automatic renewal of the prior allowance.
+- **Local helper unavailable:** start one helper, keep Terminal open, and reopen the popup.
+- **AI search check unavailable:** raw-only `npm run dev` is fine for an ordinary audit. The approved AI session needs `npm run test:live` and its separate scope approval.
+- **Use the approved homepage:** use the exact displayed URL, with no additional routes or query. The `www` and non-`www` addresses are different scopes.
+- **Allowance exhausted / session expired:** stop the live test. Fresh approval is required for another session.
+- **Chrome closes or crashes:** stop at the first failure and record the action/time. Do not repeatedly relaunch a failing native test.
 
-The new one-command launcher passed scope/expiry tests and native dialog syntax compilation. It has not yet been exercised through a new installed-extension live UI session; that is the manual test described here.
+When finished with the live helper, press Ctrl+C to discard the in-memory key.
+
+## What has been tested
+
+Version 0.2 passed 55 automated tests, typecheck/build, and fixture report/popup-preview QA. The redesigned installed toolbar with live results remains a **manual check**: an isolated native debugging session closed and was stopped. The fixture preview is not proof of Chrome's native popup/permission behavior. [Test report](TEST-REPORT.md).

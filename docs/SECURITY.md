@@ -18,7 +18,7 @@ Public link/OG probes undergo the same production DNS/redirect validation. No au
 
 All queries/fragments are removed from chosen requests and stored URLs. Query-dependent link/OG references are omitted from probing and reported as unknown; their stripped URLs cannot create false broken-resource findings. Query-dependent canonicals are unknown. Private/auth/action/token-like paths and long opaque path segments are rejected. Legitimate query-routed, signed-asset, nonstandard-port, IP-literal, and some slug-based sites will be unsupported or require manual review. Header link URLs are sanitized before retention. This reduces risk, not a guarantee that every conceivable secret-shaped public path can be identified. Choose intentionally public content URLs only.
 
-The helper writes no report database, HTML logs, browser state or API credential file. The optional approved Search/Fetch process holds its owner-supplied key only server-side in process memory/environment; it never exposes the key to the extension or response. Reports/observations are persisted on-device in localStorage by the report UI; **Forget saved report** clears the app's key. Explicit exports remain on disk until the user removes them. No telemetry.
+The helper writes no report database, HTML logs, browser state or API credential file. The optional approved Search/Fetch process holds its owner-supplied key only server-side in process memory/environment; it never exposes the key to the extension or response. At most ten explicitly audited reports/observations are persisted on-device in localStorage. This is chosen-page report history, not collection of browsing history. **Forget this saved report** removes the selected report; other audited reports remain. Explicit exports remain on disk until the user removes them. No telemetry.
 
 ## Test boundary
 
@@ -37,3 +37,13 @@ The live service first requires successful anonymous raw HTML checks and allowed
 Search snippets/text are escaped as data. Query-bearing result URLs are stripped and cannot establish an exact URL match. Query/page echoes must match the requested sample. Locale and query are explicit; changing them or switching fixture/live observers cannot make a previous retrieval finding silently fixed. The fixture service lives only under `tests/` and is labeled synthetic throughout UI, prompts and exports.
 
 Do not deploy this local helper as a public service without a new security review, authentication, ownership/consent controls and operational limits.
+
+## Version 0.2 popup and score
+
+An explicit popup click creates a short-lived local job with a random 32-character identifier, one sanitized public URL, consent flags, and local tab references. The extension creates an inactive report tab so a scan can finish when the popup closes. The job contains no API credential, pairing token, authenticated DOM, or browsing history. It can start only once while pending, within 30 seconds, and expires after five minutes. No background worker or new permission is added. Rechecks require an explicit button click for the same public pages/AI setting.
+
+The helper exposes only nonsecret approved scope metadata and validates a live AI request's exact URL/query/page limit before raw audit or provider work. A rejected scope starts neither. The popup offers raw page-basics checks when optional AI scope does not match; it never expands provider approval itself.
+
+The fixed weighted score consumes observed checks, not page-embedded instructions, paid search positions, or duplicated passes. Missing expected checks and lost rendered evidence cannot silently count as repaired. Methodology/coverage remain visible, and the original evidence remains in technical details and exports. Score and report persistence do not cause automatic requests.
+
+For isolated QA, `tests/build-ui-extension.ts` creates a separate fixture-only bundle under ignored `output/extension-qa-fixture/` using port 4319. It does not edit the production manifest/bundle or permit private targets in production. The ordinary shipped host remains exactly `http://127.0.0.1:4317/*`.

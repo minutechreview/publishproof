@@ -13,7 +13,14 @@ export interface Check {
   impact: string;
   repair: string;
   acceptance: string;
-  source: "http" | "raw-html" | "rendered-dom" | "sample" | "owner-integration" | "tinyfish-search" | "tinyfish-fetch";
+  source:
+    | "http"
+    | "raw-html"
+    | "rendered-dom"
+    | "sample"
+    | "owner-integration"
+    | "tinyfish-search"
+    | "tinyfish-fetch";
 }
 export interface Metadata {
   titles: string[];
@@ -56,6 +63,7 @@ export interface Report {
   };
   tinyfish: { status: "inactive" | "live" | "fixture"; reason: string };
   retrieval?: RetrievalEvidence;
+  scoreRequirements?: string[]; // Local recheck observer IDs, never sent in a scan request.
 }
 export interface SearchHit {
   url: string;

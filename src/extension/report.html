@@ -2,250 +2,379 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="data:," />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>PublishProof · public page evidence</title>
+    <link rel="icon" href="data:," />
+    <title>PublishProof · Know your website</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <a class="skip" href="#main">Skip to report</a>
     <header class="topbar">
       <a href="report.html" class="brand"
-        ><span class="mark" aria-hidden="true">P✓</span
-        ><strong>PublishProof</strong></a
-      ><span class="badge">Local prototype</span
-      ><span id="connection" class="connection"
-        >Connecting to local helper…</span
-      >
+        ><span class="mark" aria-hidden="true">p<span>✓</span></span
+        >PublishProof</a
+      ><span class="nav-caption">A LITTLE CLARITY AFTER LAUNCH.</span
+      ><span id="connection" class="connection">Connecting…</span>
     </header>
     <main id="main" class="shell">
-      <section class="intro">
-        <p class="eyebrow">POST-LAUNCH PAGE CHECKS</p>
-        <h1>You shipped.<br /><span>Let’s check the evidence.</span></h1>
-        <p class="lede">
-          Find what needs attention, hand your coding agent a precise repair
-          prompt, then verify your next deployment.
-        </p>
-      </section>
       <div id="demo-notice" class="notice" hidden>
-        <strong>Fixture demo · no live site is scanned.</strong> The first scan
-        uses seeded defects. Recheck serves revised fixtures. TinyFish remains
-        inactive.
+        <strong>Sample demo.</strong> These are local fixtures, including
+        synthetic Search/Fetch data — not live TinyFish or a real site repair.
       </div>
       <div id="error" class="error" role="alert" hidden></div>
-      <div class="workspace">
-        <aside class="sidebar">
-          <section class="panel setup">
-            <div class="section-heading">
-              <span class="step">01</span>
-              <h2>Choose your sample</h2>
-            </div>
-            <label for="page-url">Current public page</label
+      <section class="intro" id="intro">
+        <div>
+          <p class="eyebrow">BUILT A WEBSITE? TAKE A BREATH.</p>
+          <h1>Know what’s working.<br /><span>Make the rest better.</span></h1>
+          <p class="lede">
+            A clear check of your website, with a useful next step.<br />Understand
+            the result. Know your next step.
+          </p>
+        </div>
+        <div class="intro-symbol" aria-hidden="true">
+          <span>↗</span><i></i><i></i><i></i>
+        </div>
+      </section>
+      <section class="setup" id="setup">
+        <form id="audit-form">
+          <div class="url-entry">
+            <label class="sr-only" for="page-url">Public page URL</label
+            ><span class="url-icon" aria-hidden="true">↗</span
             ><input
               id="page-url"
               type="url"
-              placeholder="https://your-site.com/"
+              placeholder="https://your-website.com"
               autocomplete="off"
               spellcheck="false"
               required
-            />
-            <label for="routes"
-              >Up to four more routes
-              <span class="muted">(optional)</span></label
-            ><textarea
-              id="routes"
-              rows="4"
-              placeholder="/about&#10;/pricing&#10;/contact"
-              spellcheck="false"
-            ></textarea>
-            <p class="tiny">
-              Same origin only. Query strings and fragments are stripped.
-              Private or token-like paths are blocked.
-            </p>
-            <label for="target-query">Target search query <span class="muted">(optional)</span></label>
-            <input id="target-query" type="text" maxlength="240" placeholder="e.g. beginner website launch checklist" autocomplete="off" />
-            <p class="tiny">Without a query, Search checks discovery using the page URL. Search locale is US/en; this is not a Google rank check.</p>
+            /><button id="audit" class="primary" type="submit">
+              Audit this page <span aria-hidden="true">→</span></button
+            ><button id="new-audit" class="secondary" type="button" hidden>
+              Change page
+            </button>
+          </div>
+          <div id="setup-options">
             <label class="consent"
               ><input id="consent" type="checkbox" /><span
-                >I have permission to check these public pages. They open
-                without signing in, and I consent to this local helper fetching
-                them without cookies. Use a signed-out tab for the optional
-                local DOM snapshot.</span
+                >This page is public, and I have permission to check it.</span
               ></label
             >
-            <label class="consent"><input id="tinyfish-enable" type="checkbox" disabled /><span>Add Search & Fetch observations.</span></label>
-            <p id="retrieval-availability" class="tiny">Inactive until scoped server-side setup. Raw checks work without a key.</p>
-            <label class="consent"><input id="remote-consent" type="checkbox" /><span>I consent to sending only these public URLs and the public query to TinyFish. No local DOM or browser cookies are sent. Its remote fetching is outside this helper's network control.</span></label>
-            <button id="discover" class="secondary" hidden>
-              Read links in this public tab
-            </button>
-            <div id="suggested" class="suggested" hidden></div>
-            <button id="audit" class="primary">Check selected pages →</button
-            ><button id="new-audit" class="secondary" hidden>
-              Start a new sample
-            </button>
-            <p id="local-dom" class="tiny">
-              No authenticated DOM is uploaded. Rendered observations, when
-              available, stay on your device.
-            </p>
-          </section>
-          <section class="panel boundary">
-            <span class="eyebrow">WHAT THIS CAN TELL YOU</span>
-            <p>
-              Evidence from a bounded public sample. Each finding tells you
-              where it came from and what remains uncertain.
-            </p>
-            <details>
-              <summary>Analytics, indexing & citations</summary>
-              <p>
-                Analytics is optional. A script does not prove event receipt.
-                Search Console and analytics owner integrations are needed to
-                verify indexing, traffic, and delivered events.
-              </p>
-              <p>
-                “Citations” can mean content sources, directory mentions of a
-                business, or links in AI answers. There is no universal citation
-                tag.
-              </p>
-              <p>
-                robots.txt, sitemaps, llms.txt, and special AI schema are not
-                required for every site. This audit doesn’t promise rankings or
-                find every flaw.
-              </p>
+            <label class="consent" id="remote-option"
+              ><input id="tinyfish-enable" type="checkbox" disabled /><span
+                >Include an AI search check.<small id="retrieval-availability"
+                  >Available when the approved helper is connected.</small
+                ></span
+              ></label
+            >
+            <label class="consent" id="remote-consent-row" hidden
+              ><input id="remote-consent" type="checkbox" /><span
+                >I agree to send the chosen public URLs and search words to
+                TinyFish. No cookies or local page content are sent.</span
+              ></label
+            >
+            <details class="advanced">
+              <summary>
+                More pages & search options <span>optional</span>
+              </summary>
+              <div class="advanced-fields">
+                <label for="routes"
+                  >Other pages on this website
+                  <span class="muted">up to four</span></label
+                ><textarea
+                  id="routes"
+                  rows="3"
+                  placeholder="/about&#10;/pricing"
+                  spellcheck="false"
+                ></textarea
+                ><label for="target-query"
+                  >What would someone search for?
+                  <span class="muted">optional</span></label
+                ><input
+                  id="target-query"
+                  type="text"
+                  maxlength="240"
+                  placeholder="Leave blank to check the page address"
+                  autocomplete="off"
+                />
+                <p class="tiny">
+                  Only public pages from the same website. Private links and URL
+                  parameters are left out.
+                </p>
+                <button id="discover" class="secondary" type="button" hidden>
+                  Choose links from this page
+                </button>
+                <div id="suggested" hidden></div>
+              </div>
             </details>
-          </section>
-          <section class="panel boundary">
-            <span class="eyebrow">SEARCH & FETCH</span>
-            <h3>Two different observations.</h3>
-            <p>
-              Search observes visibility in one result sample. Fetch observes
-              extracted readable text. Neither proves Google ranking or every AI
-              tool's understanding. Live use needs a server key and approved scope.
-              Paid Agent and Browser APIs stay inactive.
+          </div>
+        </form>
+      </section>
+      <section id="empty" class="empty-state">
+        <div class="empty-rule"></div>
+        <p>CHECK THE PAGE → UNDERSTAND THE RESULT → FIX & RECHECK</p>
+        <h2>Built for the “is my website okay?” moment.</h2>
+        <div class="empty-columns">
+          <div>
+            <span class="simple-icon">✓</span>
+            <h3>See the good stuff</h3>
+            <p>Know which page basics are already working.</p>
+          </div>
+          <div>
+            <span class="simple-icon">↗</span>
+            <h3>Know what to improve</h3>
+            <p>Get plain-English advice with evidence behind it.</p>
+          </div>
+          <div>
+            <span class="simple-icon">↻</span>
+            <h3>Check your progress</h3>
+            <p>Give your coding agent the fixes. Come back to verify them.</p>
+          </div>
+        </div>
+      </section>
+      <section id="results" hidden>
+        <div class="report-heading">
+          <div>
+            <p class="eyebrow">YOUR WEBSITE, A LITTLE CLEARER.</p>
+            <h1 id="report-title">Here’s how your page is doing.</h1>
+            <p id="observed" class="muted"></p>
+          </div>
+          <div class="recheck-action">
+            <button
+              id="recheck"
+              class="secondary"
+              aria-describedby="recheck-permission"
+            >
+              Check again <span aria-hidden="true">↻</span>
+            </button>
+            <p id="recheck-permission" class="tiny">
+              Rechecks the same public pages and AI settings.
             </p>
-            <details>
-              <summary>Why not use Fetch for HTML tags?</summary>
-              <p>
-                TinyFish Fetch returns cleaned semantic content and may prefer
-                OG title. Exact title, canonical, and JSON-LD checks here use
-                public raw HTTP and a local DOM snapshot instead.
+          </div>
+        </div>
+        <section class="health-hero" aria-label="Page health summary">
+          <div class="health-main">
+            <div id="score-orbit" class="score-orbit">
+              <div>
+                <strong id="health-score">—</strong><span>out of 100</span>
+              </div>
+            </div>
+            <div class="health-copy">
+              <p class="eyebrow">VERIFIED PAGE HEALTH</p>
+              <h2 id="health-label"></h2>
+              <p id="score-coverage"></p>
+              <p class="health-caveat">
+                Page basics only. Rankings and full usability need other checks.
               </p>
-            </details>
+              <p id="score-change" class="score-change" hidden></p>
+            </div>
+          </div>
+          <div class="health-categories">
+            <div>
+              <span>Search basics</span><strong id="search-score">—</strong>
+            </div>
+            <div>
+              <span>Visitor basics</span><strong id="visitor-score">—</strong>
+            </div>
+            <button id="score-explainer" class="text-button">
+              How this score works ↗
+            </button>
+          </div>
+        </section>
+        <nav class="report-tabs" role="tablist" aria-label="Report sections">
+          <button
+            id="overview-tab"
+            role="tab"
+            aria-selected="true"
+            aria-controls="overview-panel"
+          >
+            Your report</button
+          ><button
+            id="technical-tab"
+            role="tab"
+            aria-selected="false"
+            aria-controls="technical-panel"
+            tabindex="-1"
+          >
+            Technical details
+          </button>
+        </nav>
+        <section
+          id="overview-panel"
+          role="tabpanel"
+          aria-labelledby="overview-tab"
+        >
+          <div class="overview-layout">
+            <div class="overview-findings">
+              <div class="section-title">
+                <h2>A clearer picture</h2>
+                <p>Choose a category to see what we found.</p>
+              </div>
+              <nav class="stats filters" aria-label="Filter checks">
+                <button data-filter="fail" aria-pressed="true">
+                  <strong id="count-fail">0</strong><span>Needs a fix</span
+                  ><i class="stat-dot fail"></i></button
+                ><button data-filter="suggestion" aria-pressed="false">
+                  <strong id="count-suggestion">0</strong
+                  ><span>Worth a review</span
+                  ><i class="stat-dot suggestion"></i></button
+                ><button data-filter="unknown" aria-pressed="false">
+                  <strong id="count-unknown">0</strong><span>Not verified</span
+                  ><i class="stat-dot unknown"></i></button
+                ><button data-filter="pass" aria-pressed="false">
+                  <strong id="count-pass">0</strong><span>Looking good</span
+                  ><i class="stat-dot pass"></i>
+                </button>
+              </nav>
+              <div id="finding-list"></div>
+            </div>
+            <aside class="next-step">
+              <p class="eyebrow">YOUR NEXT BEST STEP</p>
+              <span class="next-icon" aria-hidden="true">↗</span>
+              <h2 id="next-title">Small fixes.<br />Real progress.</h2>
+              <p id="next-description">
+                Let your coding agent handle the details. Your prompt includes
+                the evidence and checks it should run.
+              </p>
+              <button id="copy-all" class="primary">
+                Get my fix prompt <span aria-hidden="true">→</span>
+              </button>
+              <div class="next-divider"></div>
+              <ol>
+                <li><span>1</span>Copy your prompt</li>
+                <li><span>2</span>Review and publish your fixes</li>
+                <li><span>3</span>Come back and check again</li>
+              </ol>
+              <p class="tiny">
+                We’ll verify the same pages. A score only improves when a fresh
+                check earns more verified points.
+              </p>
+            </aside>
+          </div>
+          <section id="recheck-results" class="recheck-panel" hidden>
+            <div class="section-title">
+              <p class="eyebrow">YOUR PROGRESS</p>
+              <h2>Here’s what changed.</h2>
+              <p id="recheck-summary"></p>
+            </div>
+            <div id="comparison-list"></div>
           </section>
-        </aside>
-        <div class="report-column">
-          <section id="empty" class="panel empty">
-            <div class="empty-art" aria-hidden="true">
-              <span>URL</span><span>Evidence</span><span>Repair</span
-              ><span>Recheck ✓</span>
+          <section id="ai-summary" class="ai-summary" hidden>
+            <div>
+              <p class="eyebrow">THE AI SEARCH CHECK</p>
+              <h2>Can retrieval tools read your page?</h2>
+              <p id="ai-summary-text"></p>
+              <span id="ai-provenance" class="pill"></span>
             </div>
-            <h2>A useful report starts with a small sample.</h2>
-            <p>
-              Pick the pages that matter to your launch. You’ll see confirmed
-              problems, review suggestions, and things this sample can’t verify
-              — each with an exact URL and evidence.
-            </p>
-            <div class="flow">
-              <span>01 Check</span><span>02 Copy repair prompt</span
-              ><span>03 Redeploy & recheck</span>
-            </div>
+            <button id="ai-details" class="text-button">
+              See the evidence ↗
+            </button>
           </section>
-          <section id="results" hidden>
-            <div class="report-heading">
-              <div>
-                <p class="eyebrow">YOUR PAGE EVIDENCE</p>
-                <h2 id="report-title">Review your launch sample</h2>
-                <p id="observed" class="muted"></p>
-              </div>
-              <button id="recheck" class="primary">Recheck same URLs ↻</button>
+          <p class="overview-limit">
+            This checks a small public sample. Rankings, visitor tracking, full
+            mobile usability and every possible website issue still need other
+            checks.
+          </p>
+        </section>
+        <section
+          id="technical-panel"
+          role="tabpanel"
+          aria-labelledby="technical-tab"
+          hidden
+        >
+          <div class="technical-heading">
+            <div>
+              <p class="eyebrow">FOR YOU & YOUR CODING AGENT</p>
+              <h2>The evidence behind the advice.</h2>
+              <p class="muted">
+                Exact observations, source details and exports — all in one
+                place.
+              </p>
             </div>
-            <div class="stats" aria-label="Check results">
-              <div>
-                <strong id="count-fail">0</strong><span>Confirmed checks</span>
-              </div>
-              <div>
-                <strong id="count-suggestion">0</strong
-                ><span>Review suggestions</span>
-              </div>
-              <div>
-                <strong id="count-unknown">0</strong
-                ><span>Unable to verify</span>
-              </div>
-              <div>
-                <strong id="count-pass">0</strong><span>Passing checks</span>
-              </div>
-            </div>
-            <p class="tiny">
-              Counts represent individual checks on each sampled page, not
-              unique defects or an SEO score. Refresh your site tab after
-              redeploying before rechecking its local rendered snapshot.
-            </p>
             <div class="toolbar">
-              <button id="copy-all" class="secondary">Copy repair prompt</button
-              ><button id="export-md" class="secondary">
-                Export report .md</button
+              <button id="export-md" class="secondary">Export report .md</button
               ><button id="export-json" class="secondary">
-                Export evidence .json</button
-              ><button id="clear" class="text-button">
-                Forget saved report
+                Export evidence .json
               </button>
             </div>
-            <section id="recheck-results" class="panel" hidden>
-              <div class="section-heading">
-                <span class="step">03</span>
-                <h2>After your recheck</h2>
-              </div>
-              <p class="tiny">
-                Fixed means the same check has fresh passing evidence. Review
-                suggestions are “still failing” until resolved or manually
-                accepted. Missing coverage stays unable to verify.
-              </p>
-              <div id="comparison-list"></div>
-            </section>
-            <nav class="filters" aria-label="Filter checks">
-              <button data-filter="actionable" aria-pressed="true">
-                Needs attention</button
-              ><button data-filter="fail" aria-pressed="false">Confirmed</button
-              ><button data-filter="suggestion" aria-pressed="false">
-                Review</button
-              ><button data-filter="unknown" aria-pressed="false">
-                Unknown</button
-              ><button data-filter="pass" aria-pressed="false">Passed</button>
-            </nav>
-            <section id="retrieval-evidence" class="panel" hidden aria-labelledby="retrieval-heading">
-              <h2 id="retrieval-heading">Search visibility & AI-readable text</h2>
-              <div id="retrieval-detail"></div>
-            </section>
-            <div id="finding-list"></div>
-            <details class="panel coverage">
-              <summary>Sample coverage & request limits</summary>
-              <div id="coverage"></div>
-            </details>
-          </section>
-          <p id="status" class="status" role="status" aria-live="polite"></p>
-        </div>
+          </div>
+          <details id="score-method" class="technical-section">
+            <summary>How the health score works</summary>
+            <div id="score-method-detail"></div>
+          </details>
+          <details class="technical-section">
+            <summary>All check evidence</summary>
+            <div id="technical-findings"></div>
+          </details>
+          <details class="technical-section" id="retrieval-evidence" hidden>
+            <summary>Search & extracted text evidence</summary>
+            <div id="retrieval-detail"></div>
+          </details>
+          <details class="technical-section">
+            <summary>Coverage, privacy & limits</summary>
+            <div id="coverage"></div>
+            <p id="local-dom" class="tiny">
+              Local browser observations stay on this device.
+            </p>
+            <p>
+              Analytics is optional and event receipt requires owner access.
+              Content references, business listings and citations in AI answers
+              are different concepts; there is no mandatory citation tag.
+              Missing robots.txt, sitemap, llms.txt or special AI schema is not
+              automatically a defect.
+            </p>
+          </details>
+          <button id="clear" class="text-button forget">
+            Forget this saved report
+          </button>
+        </section>
+      </section>
+      <div id="running-panel" class="running-panel" hidden>
+        <span class="loading-dots" aria-hidden="true"
+          ><i></i><i></i><i></i
+        ></span>
+        <h2>A little checking. A lot more clarity.</h2>
+        <p id="loading-copy">
+          Looking at how your page opens and what search tools can read.
+        </p>
+        <div class="loading-line"></div>
       </div>
+      <p id="status" class="status" role="status" aria-live="polite"></p>
       <footer>
-        PublishProof is a provisional name. Local research prototype · evidence
-        reliability and beginner clarity · bounty eligibility unverified.
+        <span class="brand">PublishProof</span
+        ><span
+          >Your browsing stays yours. Only the pages you choose are
+          checked.</span
+        ><span>Local prototype</span>
       </footer>
     </main>
     <dialog id="prompt-dialog">
       <div class="dialog-heading">
-        <h2>Repair prompt</h2>
-        <button id="close-prompt" aria-label="Close repair prompt">✕</button>
+        <div>
+          <p class="eyebrow">LET YOUR CODING AGENT HELP</p>
+          <h2>Your next step, ready to copy.</h2>
+        </div>
+        <button
+          id="close-prompt"
+          class="icon-button"
+          aria-label="Close repair prompt"
+        >
+          ×
+        </button>
       </div>
       <p>
-        Paste this into your preferred coding agent. Review its changes before
-        deployment.
+        Paste this into ChatGPT, Claude, Cursor, or your preferred coding agent.
+        Review the changes before publishing.
       </p>
-      <textarea
-        id="prompt-text"
-        readonly
-        rows="16"
-        aria-label="Copyable repair prompt"
-      ></textarea
-      ><button id="copy-prompt" class="primary">Copy prompt</button>
+      <details class="prompt-details">
+        <summary>Preview the technical prompt</summary>
+        <textarea
+          id="prompt-text"
+          readonly
+          rows="14"
+          aria-label="Copyable repair prompt"
+        ></textarea>
+      </details>
+      <button id="copy-prompt" class="primary">Copy repair prompt</button>
       <p id="copy-status" role="status" class="tiny"></p>
     </dialog>
     <script src="report.js"></script>

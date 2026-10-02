@@ -1,20 +1,26 @@
-# Demo plan
+# A short beginner demo
+
+## Credential-free rehearsal
+
+Run `npm run build` and `npm run demo`. Show the clearly labeled fixture popup at `http://127.0.0.1:4317/popup.html`. No API key is needed and no external request occurs.
+
+1. Say: “I built this website. What should I fix before I share it?” Confirm public-page permission and choose **Audit this page**.
+2. Show the **55 / 100** fixture score and the verification coverage. Explain that it covers selected basics, not rankings or every visual flaw.
+3. Choose **View full report**. Show the four plain-English groups. Open one concrete problem, explain its effect, then reveal its exact URL/evidence only if needed.
+4. Choose **Copy repair prompt**. Explain that the coding agent gets scoped technical detail and acceptance tests; the owner reviews changes. PublishProof does not edit or deploy the website. Open **Technical details** for exports rather than making them the first screen.
+5. Choose **Check again**. The fixture helper simulates revised responses and the one-page score changes to **90**. Remaining unknowns stay visible. Clearly say “simulated repair,” not “we repaired a live website.”
+6. Reload/reopen the fixture popup to show the saved result. Optional multi-page/query controls remain tucked away. Demonstrate a narrow mobile report if helpful.
+
+To repeat the original fixture baseline, stop/restart the demo and forget its saved report. Using the multi-page fixture sample changes the observed checklist and score; do not mix it with the one-page 55 → 90 example.
 
 ## Live recording
 
-Follow [START-HERE.md](START-HERE.md). Enter the API key privately before recording. Use a separate signed-out Chrome profile and keep the local helper running.
+Follow [START-HERE.md](START-HERE.md) in a separate signed-out Chrome test profile. Use only the approved homepage and query scope. Enter the masked key before recording and keep it out of the video.
 
-1. Open one owner-approved homepage and click PublishProof. Show the exact sample URL, public-page consent and separate Search/Fetch consent.
-2. Click **Check selected pages**. Show fresh timestamps and **Live TinyFish** provenance. Explain that Search observes a query/locale-specific discovery sample while Fetch observes cleaned readable text. Raw HTTP evidence is independent.
-3. Open a concrete finding or unknown, showing URL, evidence, severity/confidence and targeted acceptance tests. Do not invent a repair if the page has none in this limited sample. Partial/failed observations stay unknown.
-4. Show the copyable scoped prompt and export Markdown/JSON. Do not apply changes as part of a button demonstration.
-5. Refresh the site tab and **Recheck same URLs**. Without a real edit/deployment, describe this as a fresh check, not a fixed website. A real repair demonstration requires a separately reviewed site change/deploy.
-6. Repeat with the other two approved homepages as separate samples. End with the bounded-sample limitations and the meaningful contribution of each endpoint.
+Start on the real public page, open the toolbar popup, choose **Audit this page**, and then **View full report**. An AI-enabled report must say **Live TinyFish**. Explain the meaningful integrations: **Search** observes the returned discovery sample, **Fetch** observes readable content, and independent raw HTTP/HTML establishes exact tags and restrictions. Partial samples remain unknown. A synthetic fixture does not satisfy the live-page requirement.
 
-The helper permits one audit and one recheck per homepage for 30 minutes. Stop on a crash/access/billing error; no automatic retries or paid fallback. Ctrl+C closes the helper. Never include key-entry UI or private browser tabs in the video.
+Record each of the three approved public homepages separately. Existing backend evidence is in [the live results](../output/selected-sites/README.md). Those earlier runs were live API observations; they do not prove the redesigned native toolbar UI works. Version 0.2's installed toolbar with live results still needs the manual check.
 
-## Credential-free walkthrough
+After an independently reviewed/approved repair and redeployment, refresh the original tab, invoke PublishProof again, and use its allowed **Check again**. Without a site repair, show a repeat observation and do not claim improvement. Do not spend extra allowance just to produce a larger number.
 
-`npm run demo` serves local HTTP fixtures. Show synthetic provenance, prioritized findings, narrow repair prompt, export, persistence and fixture recheck statuses. This is development evidence and does not satisfy the live-page requirement. Product screenshots in docs/images are labeled synthetic.
-
-The owner is making the video and will post to LinkedIn (tagging TinyFish) and Discord #showcase. Repository publication does not submit the bounty or publish social posts. See [BOUNTY.md](BOUNTY.md).
+The owner is preparing the video and required LinkedIn/Discord posts. The repository is shareable at https://github.com/minutechreview/publishproof. No social post or bounty submission is performed by this demo plan. No award or approval is claimed.

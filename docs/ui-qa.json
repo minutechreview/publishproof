@@ -1,0 +1,44 @@
+{
+  "version": "0.2.0",
+  "date": "2026-10-02",
+  "mode": "local-fixture-web-preview",
+  "automated": {
+    "tests": 55,
+    "failed": 0,
+    "typecheck": "passed",
+    "productionBuild": "passed",
+    "externalApiCalls": 0
+  },
+  "scoring": {
+    "before": 55,
+    "after": 90,
+    "fixtureRepairOnly": true,
+    "mobileHorizontalOverflow": false,
+    "reloadPreserved": true,
+    "missingEvidenceCannotEarnPoints": true,
+    "requirementsRetainedAcrossRechecks": true
+  },
+  "browser": {
+    "fixturePopupAudit": "passed",
+    "fixturePopupCloseAndReopen": "passed",
+    "viewFullReportMatchesPopup": "passed",
+    "promptClipboardCopy": "passed",
+    "markdownAndJsonDownloads": "passed",
+    "reportTabKeyboardNavigation": "passed",
+    "mobileViewport": "390x844",
+    "reducedMotionAnimation": "none",
+    "consoleErrors": 0,
+    "consoleWarnings": 0
+  },
+  "nativeToolbar": {
+    "status": "manual-check-pending",
+    "reason": "Separate native debugging session closed during toolbar triggering; test stopped without retry; cause unestablished."
+  },
+  "boundaries": {
+    "normalBrowserProfileUntouched": true,
+    "liveTinyFishCallsThisRedesign": 0,
+    "realWebsiteEditsOrDeployments": 0,
+    "paidAgentCalls": 0,
+    "screenshotsAreFixtures": true
+  }
+}

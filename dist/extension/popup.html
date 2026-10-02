@@ -2,31 +2,98 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="data:," />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="icon" href="data:," />
     <title>PublishProof</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body class="popup">
-    <header>
-      <span class="mark" aria-hidden="true">P✓</span
-      ><strong>PublishProof</strong><span class="badge">Prototype</span>
+    <header class="popup-header">
+      <a class="brand" href="#"
+        ><span class="mark" aria-hidden="true">p<span>✓</span></span
+        >PublishProof</a
+      ><span class="mini-label">PAGE CHECK</span>
     </header>
-    <main>
-      <h1>Ship it. Then check it.</h1>
-      <p>
-        Evidence for the public page you just launched. Choose up to five
-        routes, get a repair prompt, and recheck after deployment.
+    <main class="popup-main">
+      <div id="popup-start">
+        <p class="eyebrow">YOU BUILT IT. NOW KNOW IT.</p>
+        <h1>A little clarity.<br />A better website.</h1>
+        <p class="popup-lede">
+          Find what’s working, what needs care, and what to fix next.
+        </p>
+      </div>
+      <div class="site-chip">
+        <span class="site-dot" aria-hidden="true"></span
+        ><span id="popup-site">Reading this page…</span>
+      </div>
+      <section id="popup-result" hidden aria-live="polite">
+        <div class="popup-score-row">
+          <div class="score-orbit small" id="popup-orbit">
+            <div><strong id="popup-score">—</strong><span>/ 100</span></div>
+          </div>
+          <div>
+            <p class="eyebrow">VERIFIED PAGE HEALTH</p>
+            <h2 id="popup-heading"></h2>
+            <p id="popup-coverage" class="tiny"></p>
+          </div>
+        </div>
+        <div id="popup-counts" class="popup-counts"></div>
+        <p id="popup-change" class="popup-change" hidden></p>
+        <button id="view-report" class="primary">
+          View full report <span aria-hidden="true">↗</span>
+        </button>
+        <button id="popup-recheck" class="text-button">
+          Check this page again ↻
+        </button>
+        <p class="score-note">
+          Rechecks this public page with the same AI setting. The score covers
+          checked basics, not rankings or every website issue.
+        </p>
+      </section>
+      <div id="popup-progress" class="popup-progress" hidden>
+        <span class="loading-dots" aria-hidden="true"
+          ><i></i><i></i><i></i
+        ></span>
+        <h2>Giving your page a closer look</h2>
+        <p class="muted">
+          You can close this popup. Your report will be waiting here.
+        </p>
+      </div>
+      <div id="popup-controls">
+        <label class="consent compact"
+          ><input id="popup-consent" type="checkbox" /><span
+            >This page is public, and I have permission to check it.</span
+          ></label
+        >
+        <label id="popup-remote-row" class="consent compact" hidden
+          ><input id="popup-remote" type="checkbox" /><span
+            >Include an AI search check.<small
+              >Send only this public URL to TinyFish. No cookies or browsing
+              history.</small
+            ></span
+          ></label
+        >
+        <button id="audit-page" class="primary">
+          Audit this page <span aria-hidden="true">→</span>
+        </button>
+      </div>
+      <p id="popup-error" class="error" role="alert" hidden></p>
+      <p id="popup-note" class="tiny" role="status">
+        Only the page you choose is checked.
       </p>
-      <button id="open" class="primary">Open page auditor →</button>
-      <p id="message" role="status" class="muted">
-        Nothing runs until you choose URLs and confirm public-site consent.
-      </p>
-      <p class="tiny">
-        Local helper required. No browser history or cookies. TinyFish journey
-        is inactive.
-      </p>
+      <details id="popup-help" class="popup-help" hidden>
+        <summary>Set up the local prototype</summary>
+        <p>
+          Start <code>npm run dev</code> in the PublishProof folder, then reopen
+          this popup. Live AI checks use the private
+          <code>npm run test:live</code> helper.
+        </p>
+      </details>
     </main>
+    <footer class="popup-footer">
+      <span class="privacy-dot" aria-hidden="true"></span> Your browsing stays
+      yours.
+    </footer>
     <script src="popup.js"></script>
   </body>
 </html>

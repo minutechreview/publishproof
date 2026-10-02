@@ -7,3 +7,5 @@ output/chrome-test-profile*/
 output/live-demo-approval.json
 output/live-demo-authorization.md
 .playwright-cli/
+
+output/extension-qa-fixture/

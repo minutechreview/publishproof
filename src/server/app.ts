@@ -5,6 +5,7 @@ import { resolve } from "node:path";
 import type { Report } from "../shared/model.js";
 import { scan } from "./scan.js";
 import type { RetrievalService } from "./retrieval.js";
+import { selectUrls } from "../shared/urls.js";
 import { retrievalChecks, searchQuery } from "../shared/retrieval.js";
 const port = 4317;
 export function createApp(
@@ -73,7 +74,13 @@ export function createApp(
         route === "/api/session" &&
         (req.method === "GET" || req.method === "POST")
       ) {
-        send(200, { token, mode, tinyfish: "inactive", retrieval: retrieval?.kind ?? "inactive" });
+        send(200, {
+          token,
+          mode,
+          tinyfish: "inactive",
+          retrieval: retrieval?.kind ?? "inactive",
+          ...(retrieval?.scope ? { scope: retrieval.scope } : {}),
+        });
         return;
       }
       const supplied = req.headers["x-publishproof-token"];
@@ -120,14 +127,32 @@ export function createApp(
         } finally {
           clearTimeout(bodyTimer);
         }
-        const input = JSON.parse(body) as { consent?: boolean; urls?: unknown; tinyfish?: {enabled?: boolean; query?: unknown; remoteConsent?: boolean} };
+        const input = JSON.parse(body) as {
+          consent?: boolean;
+          urls?: unknown;
+          tinyfish?: {
+            enabled?: boolean;
+            query?: unknown;
+            remoteConsent?: boolean;
+          };
+        };
         if (input.consent !== true) {
           send(400, { error: "Public-site consent is required." });
           return;
         }
-        if (input.tinyfish?.enabled && (!retrieval || input.tinyfish.remoteConsent !== true)) {
-          send(400, {error: "Search/Fetch is inactive or remote consent is missing. Complete scoped server-side setup or run raw checks only."});
+        if (
+          input.tinyfish?.enabled &&
+          (!retrieval || input.tinyfish.remoteConsent !== true)
+        ) {
+          send(400, {
+            error:
+              "Search/Fetch is inactive or remote consent is missing. Complete scoped server-side setup or run raw checks only.",
+          });
           return;
+        }
+        if (input.tinyfish?.enabled && retrieval?.validate) {
+          const urls = selectUrls(input.urls);
+          retrieval.validate(urls, searchQuery(input.tinyfish.query, urls[0]));
         }
         busy = true;
         starts.push(Date.now());
@@ -136,10 +161,22 @@ export function createApp(
           if (input.tinyfish?.enabled && retrieval) {
             const query = searchQuery(input.tinyfish.query, report.urls[0]);
             report.retrieval = await retrieval.run(report, query);
-            report.checks.push(...retrievalChecks(report.retrieval, report.urls));
+            report.checks.push(
+              ...retrievalChecks(report.retrieval, report.urls),
+            );
             report.tinyfish = {
-              status: report.retrieval.provider === "tinyfish-live" ? "live" : report.retrieval.provider === "contract-fixture" ? "fixture" : "inactive",
-              reason: report.retrieval.provider === "tinyfish-live" ? "Live TinyFish Search and Fetch observations. Agent/Browser inactive." : report.retrieval.provider === "contract-fixture" ? "Contract fixtures only. No live TinyFish calls." : "Remote checks not run; no provider requests. Review raw findings.",
+              status:
+                report.retrieval.provider === "tinyfish-live"
+                  ? "live"
+                  : report.retrieval.provider === "contract-fixture"
+                    ? "fixture"
+                    : "inactive",
+              reason:
+                report.retrieval.provider === "tinyfish-live"
+                  ? "Live TinyFish Search and Fetch observations. Agent/Browser inactive."
+                  : report.retrieval.provider === "contract-fixture"
+                    ? "Contract fixtures only. No live TinyFish calls."
+                    : "Remote checks not run; no provider requests. Review raw findings.",
             };
           }
           send(200, { report });
@@ -165,6 +202,8 @@ export function createApp(
       "/": "report.html",
       "/report.html": "report.html",
       "/report.js": "report.js",
+      "/popup.html": "popup.html",
+      "/popup.js": "popup.js",
       "/styles.css": "styles.css",
     };
     if (!fileMap[route]) {
