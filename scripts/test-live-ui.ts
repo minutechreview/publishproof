@@ -28,7 +28,8 @@ try {
   app.once("error", () => { console.log("The local helper port is already in use or unavailable. No key was logged."); process.exit(1); });
   app.listen(4317, "127.0.0.1", () => {
     console.log("Live helper ready. Leave this terminal running. Open PublishProof manually in a separate signed-out Chrome test profile.");
-    console.log("Choose ONE approved homepage, leave routes/query blank, and tick public consent, Search & Fetch, and remote consent. Click Check selected pages; then Recheck same URLs.");
+    console.log("Open ONE approved homepage, click PublishProof, tick public-page permission and Include an AI search check, then click Audit this page. Leave optional routes/search words blank.");
+    console.log("Reopen the popup and choose View full report. Check again runs the same public page and AI setting; one recheck per homepage is allowed.");
     console.log("No call has started automatically. Copy prompt and export JSON/Markdown. Stop at the first browser crash or API access error; no retry or paid fallback.");
     console.log("Session ends at " + new Date(expires).toLocaleString() + ". Ctrl+C stops it and discards the session key.");
   });
